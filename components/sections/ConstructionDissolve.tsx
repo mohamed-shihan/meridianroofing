@@ -53,20 +53,33 @@ export default function ConstructionDissolve() {
 
     const canvasAspect = canvas.width / canvas.height
     const imgAspect = img.naturalWidth / img.naturalHeight
+    const isMobile = window.innerWidth < 768
 
-    let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight
-
-    if (imgAspect > canvasAspect) {
-      // Image is wider — crop sides
-      sw = img.naturalHeight * canvasAspect
-      sx = (img.naturalWidth - sw) / 2
+    if (isMobile) {
+      // Contain logic for mobile to zoom out
+      if (imgAspect > canvasAspect) {
+        const scaledHeight = canvas.width / imgAspect
+        const yOffset = (canvas.height - scaledHeight) / 2
+        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, yOffset, canvas.width, scaledHeight)
+      } else {
+        const scaledWidth = canvas.height * imgAspect
+        const xOffset = (canvas.width - scaledWidth) / 2
+        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, xOffset, 0, scaledWidth, canvas.height)
+      }
     } else {
-      // Image is taller — crop top/bottom
-      sh = img.naturalWidth / canvasAspect
-      sy = (img.naturalHeight - sh) / 2
-    }
+      // Cover logic for desktop
+      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight
 
-    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height)
+      if (imgAspect > canvasAspect) {
+        sw = img.naturalHeight * canvasAspect
+        sx = (img.naturalWidth - sw) / 2
+      } else {
+        sh = img.naturalWidth / canvasAspect
+        sy = (img.naturalHeight - sh) / 2
+      }
+
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height)
+    }
   }
 
   // Init GSAP ScrollTrigger once frames start loading
@@ -151,14 +164,14 @@ export default function ConstructionDissolve() {
   // Reduced-motion fallback: static finished image
   if (prefersReduced) {
     return (
-      <section id="the-build" aria-label="The Build — completed estate" className="relative w-full aspect-[4/3] md:aspect-auto md:h-screen">
+      <section id="the-build" aria-label="The Build — completed estate" className="relative w-full h-screen">
         <Image
           src="/ezgif-frame-300.webp"
           alt="Meridian Estate — completed aerial view"
           fill
           quality={90}
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-contain md:object-cover object-center"
         />
         <div className="absolute inset-0 bg-obsidian/50" />
         <div className="absolute bottom-10 left-8 md:left-16">
@@ -174,7 +187,7 @@ export default function ConstructionDissolve() {
       id="the-build"
       ref={sectionRef}
       aria-label="The Build — scroll to scrub through construction stages"
-      className="relative w-full overflow-hidden aspect-[4/3] md:aspect-auto md:h-screen"
+      className="relative w-full overflow-hidden h-[100svh]"
     >
       {/* Canvas — the frame scrubber */}
       <canvas
