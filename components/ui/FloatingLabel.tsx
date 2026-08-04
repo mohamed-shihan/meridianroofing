@@ -38,10 +38,10 @@ export function FloatingLabelInput({
         }}
         onChange={(e) => setHasValue(e.target.value.length > 0)}
         className={[
-          'peer w-full h-14 px-4 pt-5 pb-2 bg-transparent text-travertine text-sm font-body',
-          'border-b outline-none transition-colors duration-150',
+          'peer w-full h-16 px-5 pt-6 pb-2 bg-transparent text-travertine text-sm font-body font-medium',
+          'border-b outline-none transition-colors duration-200',
           'placeholder-transparent',
-          focused ? 'border-ember' : 'border-travertine/30',
+          focused ? 'border-ember' : 'border-travertine/25',
           'focus-visible:outline-none',
         ].join(' ')}
         placeholder={label}
@@ -49,11 +49,11 @@ export function FloatingLabelInput({
       <label
         htmlFor={uid}
         className={[
-          'absolute left-4 transition-all duration-150 pointer-events-none font-body',
+          'absolute left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
           isFloated
-            ? 'top-1.5 text-[10px] tracking-widest uppercase'
-            : 'top-4 text-sm',
-          focused ? 'text-ember' : 'text-travertine/50',
+            ? 'top-2 text-[10px] tracking-widest uppercase text-ember font-extrabold'
+            : 'top-5 text-sm text-travertine/50',
+          focused ? 'text-ember' : '',
         ].join(' ')}
       >
         {label}
@@ -95,10 +95,10 @@ export function FloatingLabelTextarea({
         }}
         onChange={(e) => setHasValue(e.target.value.length > 0)}
         className={[
-          'peer w-full px-4 pt-7 pb-2 bg-transparent text-travertine text-sm font-body resize-none',
-          'border-b outline-none transition-colors duration-150',
+          'peer w-full px-5 pt-8 pb-3 bg-transparent text-travertine text-sm font-body font-medium resize-none',
+          'border-b outline-none transition-colors duration-200',
           'placeholder-transparent',
-          focused ? 'border-ember' : 'border-travertine/30',
+          focused ? 'border-ember' : 'border-travertine/25',
           'focus-visible:outline-none',
         ].join(' ')}
         placeholder={label}
@@ -106,11 +106,11 @@ export function FloatingLabelTextarea({
       <label
         htmlFor={uid}
         className={[
-          'absolute left-4 transition-all duration-150 pointer-events-none font-body',
+          'absolute left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
           isFloated
-            ? 'top-1.5 text-[10px] tracking-widest uppercase'
-            : 'top-4 text-sm',
-          focused ? 'text-ember' : 'text-travertine/50',
+            ? 'top-2 text-[10px] tracking-widest uppercase text-ember font-extrabold'
+            : 'top-5 text-sm text-travertine/50',
+          focused ? 'text-ember' : '',
         ].join(' ')}
       >
         {label}
@@ -142,15 +142,15 @@ export function FloatingSelect({ label, name, required, options }: FloatingSelec
         onBlur={() => setFocused(false)}
         onChange={(e) => setHasValue(e.target.value.length > 0)}
         className={[
-          'peer w-full h-14 px-4 pt-5 pb-2 bg-obsidian text-travertine text-sm font-body',
-          'border-b outline-none transition-colors duration-150 cursor-pointer appearance-none',
-          focused ? 'border-ember' : 'border-travertine/30',
+          'peer w-full h-16 px-5 pt-6 pb-2 bg-transparent text-travertine text-sm font-body font-medium',
+          'border-b outline-none transition-colors duration-200 cursor-pointer appearance-none',
+          focused ? 'border-ember' : 'border-travertine/25',
           'focus-visible:outline-none',
         ].join(' ')}
       >
-        <option value="" disabled />
+        <option value="" disabled className="bg-obsidian text-travertine/40" />
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value} className="bg-obsidian">
+          <option key={opt.value} value={opt.value} className="bg-obsidian text-travertine py-2">
             {opt.label}
           </option>
         ))}
@@ -158,19 +158,19 @@ export function FloatingSelect({ label, name, required, options }: FloatingSelec
       <label
         htmlFor={uid}
         className={[
-          'absolute left-4 transition-all duration-150 pointer-events-none font-body',
+          'absolute left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
           hasValue || focused
-            ? 'top-1.5 text-[10px] tracking-widest uppercase'
-            : 'top-4 text-sm',
-          focused ? 'text-ember' : 'text-travertine/50',
+            ? 'top-2 text-[10px] tracking-widest uppercase text-ember font-extrabold'
+            : 'top-5 text-sm text-travertine/50',
+          focused ? 'text-ember' : '',
         ].join(' ')}
       >
         {label}
       </label>
-      {/* Custom chevron */}
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-          <path d="M1 1L5 5L9 1" stroke="#B9AE9A" strokeWidth="1.2" strokeLinecap="square"/>
+      {/* Custom chevron with clean spacing */}
+      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-travertine/60">
+        <svg width="12" height="7" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
     </div>

@@ -18,14 +18,14 @@ export function getAllFrameUrls(): string[] {
   return Array.from({ length: FRAME_COUNT }, (_, i) => getFrameUrl(i))
 }
 
-// Stage labels for the construction sequence
+// Stage labels tailored for Meridian Roofing Co.
 export function getStageLabel(progress: number): string {
-  if (progress < 0.15) return 'Timber Framing'
-  if (progress < 0.35) return 'Roof Trusses'
-  if (progress < 0.55) return 'Sheathing'
-  if (progress < 0.72) return 'Slate Shingles'
-  if (progress < 0.88) return 'Exterior Finish'
-  return 'Estate Complete'
+  if (progress < 0.15) return '01. Heavy Timber Framing'
+  if (progress < 0.35) return '02. Structural Roof Trusses'
+  if (progress < 0.55) return '03. Weatherproof Sheathing'
+  if (progress < 0.72) return '04. Hand-Laid Slate Shingles'
+  if (progress < 0.88) return '05. Copper Detailing & Waterproofing'
+  return '06. Completed Estate Roof System'
 }
 
 // Key static frames for section backgrounds

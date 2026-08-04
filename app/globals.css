@@ -1,26 +1,285 @@
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..900;1,300..900&display=swap');
+
 @import "tailwindcss";
 
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-obsidian:   #0B0B0A;
+  --color-slate:      #3A3D3E;
+  --color-timber:     #8C6239;
+  --color-travertine: #B9AE9A;
+  --color-hedge:      #232A20;
+  --color-ember:      #D89448;
+  --color-pool:       #2C6E68;
+
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body:    'Montserrat', system-ui, sans-serif;
+
+  /* Section vertical rhythm — matches golden ratio steps */
+  --space-section: clamp(72px, 9vw, 128px);
+
+  /* Horizontal gutter — single source of truth used by every section */
+  --gutter: clamp(24px, 5vw, 80px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Tailwind v4 theme mapping ─────────────────────────────────────────────── */
+@theme {
+  /* Colors — complete design palette, no defaults inherited */
+  --color-obsidian:     #0B0B0A;
+  --color-slate:        #3A3D3E;
+  --color-timber:       #8C6239;
+  --color-travertine:   #B9AE9A;
+  --color-hedge:        #232A20;
+  --color-ember:        #D89448;
+  --color-ember-bright: #E0A058;
+  --color-pool:         #2C6E68;
+  --color-transparent:  transparent;
+  --color-white:        #FFFFFF;
+  --color-black:        #000000;
+
+  /* Typography */
+  --font-family-display: 'Montserrat', system-ui, sans-serif;
+  --font-family-body:    'Montserrat', system-ui, sans-serif;
+
+  /* Border radius */
+  --radius-sm:   4px;
+  --radius-none: 0px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-section: clamp(64px, 8vw, 120px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base Reset ─────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0B0B0A;
+  color: #B9AE9A;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  cursor: none; /* Custom cursor replaces default */
+  overflow-x: hidden;
+}
+
+/* Show default cursor on touch devices */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0B0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #8C6239;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D89448;
+}
+
+/* ─── Focus Styles ───────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 1px solid #D89448;
+  outline-offset: 3px;
+}
+
+/* ─── Typography Utility Classes ────────────────────────────────────────────── */
+.font-display {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.font-body {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection {
+  background: #D89448;
+  color: #0B0B0A;
+}
+
+/* ─── Images ─────────────────────────────────────────────────────────────────── */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─── Hairline Divider ───────────────────────────────────────────────────────── */
+.divider-timber {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #8C6239;
+  opacity: 0.35;
+  /* fluid margin-below — no breakpoint classes needed in JSX */
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+/* ─── Section spacing ────────────────────────────────────────────────────────── */
+.section-pad {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ─── Primary Button ─────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  /* 18px top/bottom, 40px sides — optically balanced at 11px text */
+  padding: 18px 40px;
+  background: #D89448;
+  color: #0B0B0A;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  border: 2px solid #D89448;
+  border-radius: 10px;
+  cursor: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 200ms ease;
+  text-decoration: none;
+  outline: none;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(216, 148, 72, 0.25);
+}
+
+.btn-primary:hover {
+  background: #E0A058;
+  border-color: #C07830;
+  box-shadow: 0 8px 28px rgba(216, 148, 72, 0.40);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid #D89448;
+  outline-offset: 4px;
+}
+
+/* ─── Secondary Button (ghost) ───────────────────────────────────────────────── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: transparent;
+  color: #D89448;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid #D89448;
+  border-radius: 8px;
+  cursor: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-ghost:hover {
+  background: #D89448;
+  color: #0B0B0A;
+  border-color: #8C6239;
+}
+
+.btn-ghost:focus-visible {
+  outline: 1px solid #D89448;
+  outline-offset: 3px;
+}
+
+/* ─── Eyebrow Label ──────────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8C6239;
+}
+
+/* ─── Stat number ────────────────────────────────────────────────────────────── */
+.stat-number {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1;
+  color: #B9AE9A;
+  letter-spacing: -0.03em;
+}
+
+/* ─── Cursor reset for touch ─────────────────────────────────────────────────── */
+@media (hover: none) {
+  .btn-primary,
+  .btn-ghost,
+  a,
+  button {
+    cursor: auto;
+  }
+}
+
+/* ─── Canvas Scrubber ────────────────────────────────────────────────────────── */
+.scrubber-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── Gallery cursor preview ─────────────────────────────────────────────────── */
+.gallery-preview {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  width: 260px;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  border-radius: 0;
+}
+
+/* ─── Custom width utilities ─────────────────────────────────────────────────── */
+.max-w-content {
+  max-width: 1600px;
+}
+.max-w-prose {
+  max-width: 560px;
+}
+
+/* ─── Transition timing utility ──────────────────────────────────────────────── */
+.ease-out-expo {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }

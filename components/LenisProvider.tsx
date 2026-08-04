@@ -1,22 +1,15 @@
 'use client'
 import { useEffect, useRef } from 'react'
 
-declare global {
-  interface Window {
-    lenis: unknown
-  }
-}
-
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<unknown>(null)
 
   useEffect(() => {
-    let lenis: { raf: (time: number) => void; destroy: () => void } | null = null
     let rafId: number
 
     async function init() {
-      const { default: Lenis } = await import('@studio-freight/lenis')
-      lenis = new Lenis({
+      const Lenis = (await import('lenis')).default
+      const lenis = new Lenis({
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
@@ -27,7 +20,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
       lenisRef.current = lenis
 
       function raf(time: number) {
-        lenis!.raf(time)
+        lenis.raf(time)
         rafId = requestAnimationFrame(raf)
       }
       rafId = requestAnimationFrame(raf)
@@ -37,7 +30,8 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
     return () => {
       cancelAnimationFrame(rafId)
-      if (lenis) lenis.destroy()
+      const l = lenisRef.current as { destroy?: () => void } | null
+      if (l?.destroy) l.destroy()
     }
   }, [])
 
