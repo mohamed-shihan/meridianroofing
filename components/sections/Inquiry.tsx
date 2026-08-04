@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { CalendarCheck, ArrowRight, ArrowLeft } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'framer-motion'
 import SectionReveal, { RevealItem } from '@/components/ui/SectionReveal'
 import {
   FloatingLabelInput,
@@ -38,7 +38,7 @@ export default function Inquiry() {
     setStep((s) => Math.max(s - 1, 1))
   }
 
-  const slideVariants = {
+  const slideVariants: Variants = {
     hiddenRight: { x: 30, opacity: 0 },
     hiddenLeft: { x: -30, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { duration: 0.4, ease: 'easeOut' } },
