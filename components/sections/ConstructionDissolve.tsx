@@ -151,7 +151,7 @@ export default function ConstructionDissolve() {
   // Reduced-motion fallback: static finished image
   if (prefersReduced) {
     return (
-      <section id="the-build" aria-label="The Build — completed estate" className="w-full h-screen relative">
+      <section id="the-build" aria-label="The Build — completed estate" className="relative w-full aspect-[4/3] md:aspect-auto md:h-screen">
         <Image
           src="/ezgif-frame-300.webp"
           alt="Meridian Estate — completed aerial view"
@@ -174,8 +174,7 @@ export default function ConstructionDissolve() {
       id="the-build"
       ref={sectionRef}
       aria-label="The Build — scroll to scrub through construction stages"
-      className="relative w-full overflow-hidden"
-      style={{ height: '100vh' }}
+      className="relative w-full overflow-hidden aspect-[4/3] md:aspect-auto md:h-screen"
     >
       {/* Canvas — the frame scrubber */}
       <canvas

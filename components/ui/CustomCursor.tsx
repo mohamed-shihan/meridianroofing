@@ -60,7 +60,7 @@ export default function CustomCursor() {
     <>
       {/* Inner dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
         style={{
           x: springX,
           y: springY,
@@ -82,7 +82,7 @@ export default function CustomCursor() {
 
       {/* Outer ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] hidden md:block"
         style={{
           x: ringX,
           y: ringY,

@@ -1,6 +1,8 @@
 'use client'
+import { useState } from 'react'
 import Image from 'next/image'
-import { CalendarCheck } from 'lucide-react'
+import { CalendarCheck, ArrowRight, ArrowLeft } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import SectionReveal, { RevealItem } from '@/components/ui/SectionReveal'
 import {
   FloatingLabelInput,
@@ -24,6 +26,26 @@ const TIMELINE_OPTIONS = [
 ]
 
 export default function Inquiry() {
+  const [step, setStep] = useState(1)
+
+  const nextStep = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setStep((s) => Math.min(s + 1, 3))
+  }
+
+  const prevStep = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setStep((s) => Math.max(s - 1, 1))
+  }
+
+  const slideVariants = {
+    hiddenRight: { x: 30, opacity: 0 },
+    hiddenLeft: { x: -30, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.4, ease: 'easeOut' } },
+    exitRight: { x: 30, opacity: 0, transition: { duration: 0.3, ease: 'easeIn' } },
+    exitLeft: { x: -30, opacity: 0, transition: { duration: 0.3, ease: 'easeIn' } },
+  }
+
   return (
     <section
       id="inquiry"
@@ -89,68 +111,164 @@ export default function Inquiry() {
               <form
                 aria-label="Private roofing consultation form"
                 onSubmit={(e) => e.preventDefault()}
-                className="flex flex-col gap-2 bg-obsidian/60 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-timber/30 shadow-2xl"
+                className="flex flex-col gap-2 bg-obsidian/60 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-timber/30 shadow-2xl relative overflow-hidden min-h-[500px]"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
-                  <FloatingLabelInput
-                    label="First Name"
-                    name="firstName"
-                    required
-                    autoComplete="given-name"
-                  />
-                  <FloatingLabelInput
-                    label="Last Name"
-                    name="lastName"
-                    required
-                    autoComplete="family-name"
-                  />
+                {/* Progress Indicators */}
+                <div className="flex gap-2 mb-8">
+                  {[1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className={`h-1 flex-1 rounded-full transition-colors duration-500 ${
+                        step >= i ? 'bg-ember' : 'bg-timber/20'
+                      }`}
+                    />
+                  ))}
                 </div>
 
-                <FloatingLabelInput
-                  label="Email Address"
-                  type="email"
-                  name="email"
-                  required
-                  autoComplete="email"
-                />
+                <div className="flex-1 relative">
+                  <AnimatePresence mode="wait">
+                    {step === 1 && (
+                      <motion.div
+                        key="step1"
+                        variants={slideVariants}
+                        initial="hiddenLeft"
+                        animate="visible"
+                        exit="exitLeft"
+                        className="flex flex-col gap-2"
+                      >
+                        <h3 className="font-display font-bold text-travertine text-xl tracking-wide uppercase mb-4">
+                          Contact Information
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                          <FloatingLabelInput
+                            label="First Name"
+                            name="firstName"
+                            required
+                            autoComplete="given-name"
+                          />
+                          <FloatingLabelInput
+                            label="Last Name"
+                            name="lastName"
+                            required
+                            autoComplete="family-name"
+                          />
+                        </div>
 
-                <FloatingLabelInput
-                  label="Phone Number"
-                  type="tel"
-                  name="phone"
-                  autoComplete="tel"
-                />
+                        <FloatingLabelInput
+                          label="Email Address"
+                          type="email"
+                          name="email"
+                          required
+                          autoComplete="email"
+                        />
 
-                <FloatingSelect
-                  label="Project Category"
-                  name="projectType"
-                  options={PROJECT_TYPE_OPTIONS}
-                />
+                        <FloatingLabelInput
+                          label="Phone Number"
+                          type="tel"
+                          name="phone"
+                          autoComplete="tel"
+                        />
 
-                <FloatingSelect
-                  label="Estimated Timeline"
-                  name="timeline"
-                  options={TIMELINE_OPTIONS}
-                />
+                        <div className="pt-6 flex justify-end">
+                          <button
+                            type="button"
+                            onClick={nextStep}
+                            className="btn-primary cursor-active w-full sm:w-auto font-extrabold tracking-widest uppercase text-xs flex items-center justify-center"
+                          >
+                            Next Step
+                            <ArrowRight size={15} strokeWidth={2.5} aria-hidden className="ml-2" />
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
 
-                <FloatingLabelTextarea
-                  label="Project Scope & Architectural Details"
-                  name="message"
-                  rows={4}
-                />
+                    {step === 2 && (
+                      <motion.div
+                        key="step2"
+                        variants={slideVariants}
+                        initial={step > 1 ? 'hiddenRight' : 'hiddenLeft'}
+                        animate="visible"
+                        exit={step > 2 ? 'exitLeft' : 'exitRight'}
+                        className="flex flex-col gap-2"
+                      >
+                        <h3 className="font-display font-bold text-travertine text-xl tracking-wide uppercase mb-4">
+                          Project Specifications
+                        </h3>
+                        <FloatingSelect
+                          label="Project Category"
+                          name="projectType"
+                          options={PROJECT_TYPE_OPTIONS}
+                        />
 
-                <div className="pt-6">
-                  <button
-                    type="submit"
-                    className="btn-primary cursor-active w-full sm:w-auto font-extrabold tracking-widest uppercase text-xs"
-                    aria-label="Submit free roofing inspection request"
-                  >
-                    BOOK FREE INSPECTION
-                    <CalendarCheck size={15} strokeWidth={2.5} aria-hidden />
-                  </button>
+                        <FloatingSelect
+                          label="Estimated Timeline"
+                          name="timeline"
+                          options={TIMELINE_OPTIONS}
+                        />
+
+                        <div className="pt-6 flex flex-col sm:flex-row justify-between gap-4">
+                          <button
+                            type="button"
+                            onClick={prevStep}
+                            className="btn-secondary cursor-active w-full sm:w-auto font-extrabold tracking-widest uppercase text-xs flex items-center justify-center border border-timber/30 px-6 py-4 rounded-xl text-travertine hover:border-ember transition-colors"
+                          >
+                            <ArrowLeft size={15} strokeWidth={2.5} aria-hidden className="mr-2" />
+                            Back
+                          </button>
+                          <button
+                            type="button"
+                            onClick={nextStep}
+                            className="btn-primary cursor-active w-full sm:w-auto font-extrabold tracking-widest uppercase text-xs flex items-center justify-center"
+                          >
+                            Next Step
+                            <ArrowRight size={15} strokeWidth={2.5} aria-hidden className="ml-2" />
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {step === 3 && (
+                      <motion.div
+                        key="step3"
+                        variants={slideVariants}
+                        initial="hiddenRight"
+                        animate="visible"
+                        exit="exitRight"
+                        className="flex flex-col gap-2"
+                      >
+                        <h3 className="font-display font-bold text-travertine text-xl tracking-wide uppercase mb-4">
+                          Architectural Details
+                        </h3>
+                        <FloatingLabelTextarea
+                          label="Project Scope & Architectural Details"
+                          name="message"
+                          rows={4}
+                        />
+
+                        <div className="pt-6 flex flex-col sm:flex-row justify-between gap-4">
+                          <button
+                            type="button"
+                            onClick={prevStep}
+                            className="btn-secondary cursor-active w-full sm:w-auto font-extrabold tracking-widest uppercase text-xs flex items-center justify-center border border-timber/30 px-6 py-4 rounded-xl text-travertine hover:border-ember transition-colors"
+                          >
+                            <ArrowLeft size={15} strokeWidth={2.5} aria-hidden className="mr-2" />
+                            Back
+                          </button>
+                          <button
+                            type="submit"
+                            className="btn-primary cursor-active w-full sm:w-auto font-extrabold tracking-widest uppercase text-xs flex items-center justify-center"
+                            aria-label="Submit free roofing inspection request"
+                          >
+                            BOOK INSPECTION
+                            <CalendarCheck size={15} strokeWidth={2.5} aria-hidden className="ml-2" />
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                <p className="text-travertine/40 text-xs font-body mt-4 leading-relaxed">
+                <p className="text-travertine/40 text-xs font-body mt-4 leading-relaxed text-center">
                   Your property specifications are held with absolute discretion. All consultations are confidential.
                 </p>
               </form>
