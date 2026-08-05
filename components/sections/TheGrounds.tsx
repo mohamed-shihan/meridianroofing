@@ -8,7 +8,7 @@ export default function TheGrounds() {
     <section
       id="the-grounds"
       aria-label="Heritage Slate & Tile Systems"
-      className="section-pad bg-hedge"
+      className="section-pad bg-hedge scroll-mt-24 md:scroll-mt-28"
     >
       <div className="max-w-content mx-auto" style={{ paddingLeft: 'var(--gutter)', paddingRight: 'var(--gutter)' }}>
         <span className="divider-timber block" aria-hidden />
@@ -17,9 +17,9 @@ export default function TheGrounds() {
         <div className="grid grid-cols-1 lg:grid-cols-[6fr_5fr] items-center" style={{ gap: 'clamp(40px, 6vw, 80px)' }}>
           {/* Image — left */}
           <ImageReveal className="w-full order-2 lg:order-1" delay={0.1}>
-            <div className="relative w-full overflow-hidden rounded-xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
+            <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
               <Image
-                src="/ezgif-frame-220.webp"
+                src="/ezgif-frame-160.webp"
                 alt="Finished hand-laid slate roof system above luxury estate grounds"
                 fill
                 quality={85}

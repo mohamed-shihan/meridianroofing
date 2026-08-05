@@ -8,7 +8,7 @@ export default function TheApproach() {
     <section
       id="the-approach"
       aria-label="Structural Framing & Timber Trusses"
-      className="section-pad bg-obsidian"
+      className="section-pad bg-obsidian scroll-mt-24 md:scroll-mt-28"
     >
       <div className="max-w-content mx-auto" style={{ paddingLeft: 'var(--gutter)', paddingRight: 'var(--gutter)' }}>
         {/* Hairline divider */}
@@ -43,9 +43,9 @@ export default function TheApproach() {
 
           {/* Image — right column */}
           <ImageReveal className="w-full" delay={0.15}>
-            <div className="relative w-full overflow-hidden rounded-xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
+            <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
               <Image
-                src="/ezgif-frame-250.webp"
+                src="/ezgif-frame-045.webp"
                 alt="Heavy timber framing and structural roof truss installation on luxury residential estate"
                 fill
                 quality={85}

@@ -14,21 +14,21 @@ const GALLERY_ITEMS = [
     aspect: '16/10',
   },
   {
-    src: '/ezgif-frame-245.webp',
+    src: '/ezgif-frame-140.webp',
     alt: 'Custom copper dormer flashing and architectural gutter craft',
     caption: 'Architectural Copper Flashing',
     span: '',
     aspect: '4/3',
   },
   {
-    src: '/ezgif-frame-290.webp',
+    src: '/ezgif-frame-195.webp',
     alt: 'Heavy timber roof eaves and overhang framing integrated with glass facade',
     caption: 'Timber Eaves & Facade Roofing',
     span: '',
     aspect: '4/3',
   },
   {
-    src: '/ezgif-frame-120.webp',
+    src: '/ezgif-frame-110.webp',
     alt: 'Aerial structural roof detail showing slate tiles over heavy timber trusses',
     caption: 'Multi-Pitch Truss Geometry',
     span: 'lg:col-span-2',
@@ -55,7 +55,7 @@ export default function Gallery() {
     <section
       id="gallery"
       aria-label="Roofing Portfolio Gallery"
-      className="section-pad bg-obsidian"
+      className="section-pad bg-obsidian scroll-mt-24 md:scroll-mt-28"
     >
       <div className="max-w-content mx-auto" style={{ paddingLeft: 'var(--gutter)', paddingRight: 'var(--gutter)' }}>
         <span className="divider-timber mb-12 block" aria-hidden />
@@ -72,7 +72,7 @@ export default function Gallery() {
         {/* Cursor-following preview */}
         <motion.div
           aria-hidden
-          className="fixed top-0 left-0 pointer-events-none z-50 rounded-lg overflow-hidden border border-ember/40 shadow-2xl"
+          className="fixed top-0 left-0 pointer-events-none z-50 rounded-2xl overflow-hidden border border-ember/40 shadow-2xl"
           style={{
             x: previewX,
             y: previewY,
@@ -110,7 +110,7 @@ export default function Gallery() {
               delay={i * 0.06}
             >
               <div
-                className="relative w-full overflow-hidden rounded-xl border border-timber/25 group cursor-active"
+                className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-timber/25 group cursor-active"
                 style={{ aspectRatio: item.aspect }}
                 onMouseEnter={() => setActivePreview(item.src)}
                 onMouseLeave={() => setActivePreview(null)}

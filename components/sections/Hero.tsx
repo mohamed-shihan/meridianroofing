@@ -12,11 +12,11 @@ export default function Hero() {
     >
       {/* Background image */}
       <Image
-        src="/ezgif-frame-300.webp"
-        alt="Meridian Roofing Co. — Completed slate roof and timber framing project at dusk"
+        src="/hero_background.png"
+        alt="Meridian Roofing Co. — Ultra-luxury estate with timber framing and dark slate roof"
         fill
         priority
-        quality={90}
+        quality={95}
         sizes="100vw"
         className="object-cover object-center"
         style={{ zIndex: 0 }}
@@ -105,61 +105,36 @@ export default function Hero() {
             Estate-grade slate roofing, heavy timber framing, and custom architectural roof systems — built to outlast generations.
           </motion.p>
 
-          {/* CTA */}
+          {/* Single primary CTA */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+            className="flex items-center"
           >
             <a
               href="#inquiry"
               aria-label="Book a free roofing inspection"
-              className="cursor-active hover:opacity-90 flex justify-center items-center w-full sm:w-auto"
+              className="cursor-active hover:opacity-90 flex justify-center items-center whitespace-nowrap"
               style={{
                 gap: '10px',
-                padding: '18px 36px',
+                padding: '18px 38px',
                 background: '#D89448',
                 color: '#0B0B0A',
                 fontFamily: 'Montserrat, system-ui, sans-serif',
                 fontWeight: 900,
-                fontSize: '11px',
+                fontSize: 'clamp(10px, 1.1vw, 12px)',
                 letterSpacing: '0.20em',
                 textTransform: 'uppercase',
                 border: '2px solid #D89448',
-                borderRadius: '10px',
+                borderRadius: '14px',
                 textDecoration: 'none',
                 cursor: 'none',
-                boxShadow: '0 4px 20px rgba(216,148,72,0.30)',
+                boxShadow: '0 6px 24px rgba(216,148,72,0.35)',
               }}
             >
-              <CalendarCheck size={16} strokeWidth={2.5} aria-hidden />
-              BOOK FREE INSPECTION
-            </a>
-
-            <a
-              href="#the-build"
-              aria-label="Explore our construction process"
-              className="cursor-active hover:text-travertine hover:border-timber/80 flex justify-center items-center w-full sm:w-auto"
-              style={{
-                gap: '8px',
-                padding: '18px 32px',
-                background: 'transparent',
-                color: '#B9AE9A',
-                fontFamily: 'Montserrat, system-ui, sans-serif',
-                fontWeight: 700,
-                fontSize: '11px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                border: '1px solid rgba(140,98,57,0.50)',
-                borderRadius: '10px',
-                textDecoration: 'none',
-                cursor: 'none',
-                transition: 'border-color 160ms ease, color 160ms ease',
-              }}
-            >
-              OUR PROCESS
-              <ArrowRight size={14} strokeWidth={2} aria-hidden />
+              <CalendarCheck size={16} strokeWidth={2.5} aria-hidden className="shrink-0" />
+              <span>BOOK FREE INSPECTION</span>
             </a>
           </motion.div>
         </motion.div>

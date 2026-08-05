@@ -50,14 +50,14 @@ export default function Inquiry() {
     <section
       id="inquiry"
       aria-label="Request a Roofing Consultation"
-      className="relative min-h-screen flex items-center pt-24 pb-20"
+      className="relative min-h-screen flex items-center pt-24 pb-20 scroll-mt-24 md:scroll-mt-28"
     >
-      {/* Background — frame 285 */}
+      {/* Background — luxury estate dusk */}
       <Image
-        src="/ezgif-frame-285.webp"
-        alt="Meridian Roofing Co. — Estate roof project at dusk"
+        src="/hero_background.png"
+        alt="Meridian Roofing Co. — Ultra-luxury estate roof project at dusk"
         fill
-        quality={85}
+        quality={90}
         sizes="100vw"
         className="object-cover object-center"
         style={{ zIndex: 0 }}
@@ -111,7 +111,7 @@ export default function Inquiry() {
               <form
                 aria-label="Private roofing consultation form"
                 onSubmit={(e) => e.preventDefault()}
-                className="flex flex-col gap-2 bg-obsidian/60 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-timber/30 shadow-2xl relative overflow-hidden min-h-[500px]"
+                className="flex flex-col gap-2 bg-obsidian/60 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-timber/30 shadow-2xl relative overflow-hidden min-h-[500px]"
               >
                 {/* Progress Indicators */}
                 <div className="flex gap-2 mb-8">

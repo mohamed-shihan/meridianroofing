@@ -53,33 +53,18 @@ export default function ConstructionDissolve() {
 
     const canvasAspect = canvas.width / canvas.height
     const imgAspect = img.naturalWidth / img.naturalHeight
-    const isMobile = window.innerWidth < 768
+    // Cover logic for all viewports — fills screen without letterboxing
+    let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight
 
-    if (isMobile) {
-      // Contain logic for mobile to zoom out
-      if (imgAspect > canvasAspect) {
-        const scaledHeight = canvas.width / imgAspect
-        const yOffset = (canvas.height - scaledHeight) / 2
-        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, yOffset, canvas.width, scaledHeight)
-      } else {
-        const scaledWidth = canvas.height * imgAspect
-        const xOffset = (canvas.width - scaledWidth) / 2
-        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, xOffset, 0, scaledWidth, canvas.height)
-      }
+    if (imgAspect > canvasAspect) {
+      sw = img.naturalHeight * canvasAspect
+      sx = (img.naturalWidth - sw) / 2
     } else {
-      // Cover logic for desktop
-      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight
-
-      if (imgAspect > canvasAspect) {
-        sw = img.naturalHeight * canvasAspect
-        sx = (img.naturalWidth - sw) / 2
-      } else {
-        sh = img.naturalWidth / canvasAspect
-        sy = (img.naturalHeight - sh) / 2
-      }
-
-      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height)
+      sh = img.naturalWidth / canvasAspect
+      sy = (img.naturalHeight - sh) / 2
     }
+
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height)
   }
 
   // Init GSAP ScrollTrigger once frames start loading
@@ -187,7 +172,7 @@ export default function ConstructionDissolve() {
       id="the-build"
       ref={sectionRef}
       aria-label="The Build — scroll to scrub through construction stages"
-      className="relative w-full overflow-hidden h-[100svh]"
+      className="relative w-full overflow-hidden h-[100dvh] min-h-[500px]"
     >
       {/* Canvas — the frame scrubber */}
       <canvas

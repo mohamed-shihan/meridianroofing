@@ -15,7 +15,7 @@ export default function Specifications() {
     <section
       id="specifications"
       aria-label="Roofing Specifications & Performance Standards"
-      className="bg-hedge section-pad"
+      className="bg-hedge section-pad scroll-mt-24 md:scroll-mt-28"
     >
       <div className="max-w-content mx-auto" style={{ paddingLeft: 'var(--gutter)', paddingRight: 'var(--gutter)' }}>
         <span className="divider-timber mb-12 block" aria-hidden />

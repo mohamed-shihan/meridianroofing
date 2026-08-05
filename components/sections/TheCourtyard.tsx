@@ -8,7 +8,7 @@ export default function TheCourtyard() {
     <section
       id="the-courtyard"
       aria-label="Roofline Geometry & Copper Flashing"
-      className="section-pad bg-obsidian"
+      className="section-pad bg-obsidian scroll-mt-24 md:scroll-mt-28"
     >
       <div className="max-w-content mx-auto" style={{ paddingLeft: 'var(--gutter)', paddingRight: 'var(--gutter)' }}>
         <span className="divider-timber block" aria-hidden />
@@ -43,9 +43,9 @@ export default function TheCourtyard() {
 
           {/* Image — right */}
           <ImageReveal className="w-full" delay={0.15}>
-            <div className="relative w-full overflow-hidden rounded-xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
+            <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
               <Image
-                src="/ezgif-frame-001.webp"
+                src="/ezgif-frame-085.webp"
                 alt="Aerial view of complex multi-pitch timber roof framing and courtyard geometry"
                 fill
                 quality={85}

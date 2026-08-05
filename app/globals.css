@@ -162,7 +162,7 @@ img {
   letter-spacing: 0.20em;
   text-transform: uppercase;
   border: 2px solid #D89448;
-  border-radius: 10px;
+  border-radius: 14px;
   cursor: none;
   transition:
     background-color 160ms ease,
@@ -199,7 +199,7 @@ img {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   border: 1px solid #D89448;
-  border-radius: 8px;
+  border-radius: 14px;
   cursor: none;
   transition:
     background-color 160ms ease,
