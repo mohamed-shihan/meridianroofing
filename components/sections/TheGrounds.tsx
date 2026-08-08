@@ -19,8 +19,8 @@ export default function TheGrounds() {
           <ImageReveal className="w-full order-2 lg:order-1" delay={0.1}>
             <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
               <Image
-                src="/ezgif-frame-160.webp"
-                alt="Finished hand-laid slate roof system above luxury estate grounds"
+                src="/heritage_slate_tiles.png"
+                alt="Hand-laid heritage slate tiles with copper rivets on luxury estate roof"
                 fill
                 quality={85}
                 sizes="(max-width: 1024px) 100vw, 55vw"

@@ -45,8 +45,8 @@ export default function TheApproach() {
           <ImageReveal className="w-full" delay={0.15}>
             <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
               <Image
-                src="/ezgif-frame-045.webp"
-                alt="Heavy timber framing and structural roof truss installation on luxury residential estate"
+                src="/timber_framing_trusses.png"
+                alt="Heavy timber framing and structural roof truss joinery on luxury estate"
                 fill
                 quality={85}
                 sizes="(max-width: 1024px) 100vw, 55vw"

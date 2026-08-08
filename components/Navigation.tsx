@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Slate & Tiles', href: '#the-grounds'  },
   { label: 'Specs',       href: '#specifications' },
   { label: 'Portfolio',   href: '#gallery'        },
+  { label: 'Transformations', href: '#transformations' },
 ]
 
 // ─── Shared style tokens ──────────────────────────────────────────────────────
@@ -209,7 +210,6 @@ export default function Navigation() {
               color: TRAVERTINE,
               flexShrink: 0,
               transition: 'color 150ms ease, border-color 150ms ease',
-              cursor: 'none',
             }}
           >
             {mobileOpen

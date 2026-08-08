@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import LenisProvider from '@/components/LenisProvider'
-import CustomCursor from '@/components/ui/CustomCursor'
 
 export const metadata: Metadata = {
   title: 'Meridian Roofing Co. — Master Timber Framing & Slate Roofing',
@@ -35,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-auto">
+    <html lang="en" className="scroll-auto" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -44,11 +43,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-obsidian text-travertine font-body antialiased">
+      <body className="bg-obsidian text-travertine font-body antialiased" suppressHydrationWarning>
         <LenisProvider>
           {children}
         </LenisProvider>
-        <CustomCursor />
       </body>
     </html>
   )

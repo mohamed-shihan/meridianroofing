@@ -20,7 +20,7 @@
   --space-section: clamp(72px, 9vw, 128px);
 
   /* Horizontal gutter — single source of truth used by every section */
-  --gutter: clamp(24px, 5vw, 80px);
+  --gutter: clamp(32px, 6vw, 96px);
 }
 
 /* ─── Tailwind v4 theme mapping ─────────────────────────────────────────────── */
@@ -73,15 +73,20 @@ body {
   font-family: 'Montserrat', system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.65;
-  cursor: none; /* Custom cursor replaces default */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 2v17l4.5-4.5 4 7.5 2.5-1.5-4-7.5H16z' fill='%23D89448' stroke='%230B0B0A' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;
   overflow-x: hidden;
 }
 
-/* Show default cursor on touch devices */
-@media (hover: none) {
-  body {
-    cursor: auto;
-  }
+/* Native interactive pointer cursor matching website tone (#D89448 Ember) */
+a,
+button,
+input,
+select,
+textarea,
+[role="button"],
+.cursor-pointer,
+.cursor-active {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9 2a2 2 0 0 0-2 2v7.5L5.8 10.3a1.8 1.8 0 0 0-2.5 0 1.8 1.8 0 0 0 0 2.5l6.2 6.2C11.5 21 14 22 16.5 22H18a4 4 0 0 0 4-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-1 .3A2 2 0 0 0 17 8a2 2 0 0 0-1.1.3A2 2 0 0 0 13.5 7a2 2 0 0 0-1-.2V4a2 2 0 0 0-2-2z' fill='%23D89448' stroke='%230B0B0A' stroke-width='1.2'/%3E%3C/svg%3E") 9 2, pointer !important;
 }
 
 /* ─── Custom Scrollbar ───────────────────────────────────────────────────────── */
@@ -163,7 +168,6 @@ img {
   text-transform: uppercase;
   border: 2px solid #D89448;
   border-radius: 14px;
-  cursor: none;
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
@@ -200,7 +204,6 @@ img {
   text-transform: uppercase;
   border: 1px solid #D89448;
   border-radius: 14px;
-  cursor: none;
   transition:
     background-color 160ms ease,
     color 160ms ease,

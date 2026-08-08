@@ -111,15 +111,21 @@ export default function Inquiry() {
               <form
                 aria-label="Private roofing consultation form"
                 onSubmit={(e) => e.preventDefault()}
-                className="flex flex-col gap-2 bg-obsidian/60 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-timber/30 shadow-2xl relative overflow-hidden min-h-[500px]"
+                style={{
+                  padding: 'clamp(32px, 4.5vw, 56px)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px',
+                }}
+                className="bg-obsidian/85 backdrop-blur-xl rounded-3xl border border-timber/30 shadow-2xl relative overflow-hidden min-h-[540px]"
               >
                 {/* Progress Indicators */}
-                <div className="flex gap-2 mb-8">
+                <div className="flex gap-3 mb-6 pt-2" style={{ paddingLeft: '4px', paddingRight: '4px' }}>
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className={`h-1 flex-1 rounded-full transition-colors duration-500 ${
-                        step >= i ? 'bg-ember' : 'bg-timber/20'
+                      className={`h-1.5 flex-1 rounded-full transition-colors duration-500 ${
+                        step >= i ? 'bg-ember' : 'bg-timber/25'
                       }`}
                     />
                   ))}
@@ -134,12 +140,14 @@ export default function Inquiry() {
                         initial="hiddenLeft"
                         animate="visible"
                         exit="exitLeft"
-                        className="flex flex-col gap-2"
+                        className="flex flex-col gap-5 py-2"
                       >
-                        <h3 className="font-display font-bold text-travertine text-xl tracking-wide uppercase mb-4">
+                        <h3
+                          className="font-display font-bold text-travertine text-xl sm:text-2xl tracking-wide uppercase px-4 md:px-5 pt-2 mb-6"
+                        >
                           Contact Information
                         </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                           <FloatingLabelInput
                             label="First Name"
                             name="firstName"
@@ -169,7 +177,7 @@ export default function Inquiry() {
                           autoComplete="tel"
                         />
 
-                        <div className="pt-6 flex justify-end">
+                        <div className="pt-8 flex justify-end">
                           <button
                             type="button"
                             onClick={nextStep}
@@ -189,9 +197,11 @@ export default function Inquiry() {
                         initial={step > 1 ? 'hiddenRight' : 'hiddenLeft'}
                         animate="visible"
                         exit={step > 2 ? 'exitLeft' : 'exitRight'}
-                        className="flex flex-col gap-2"
+                        className="flex flex-col gap-4 py-2"
                       >
-                        <h3 className="font-display font-bold text-travertine text-xl tracking-wide uppercase mb-4">
+                        <h3
+                          className="font-display font-bold text-travertine text-xl sm:text-2xl tracking-wide uppercase px-4 md:px-5 pt-2 mb-6"
+                        >
                           Project Specifications
                         </h3>
                         <FloatingSelect
@@ -206,7 +216,7 @@ export default function Inquiry() {
                           options={TIMELINE_OPTIONS}
                         />
 
-                        <div className="pt-6 flex flex-col sm:flex-row justify-between gap-4">
+                        <div className="pt-8 flex flex-col sm:flex-row justify-between gap-4">
                           <button
                             type="button"
                             onClick={prevStep}
@@ -234,9 +244,11 @@ export default function Inquiry() {
                         initial="hiddenRight"
                         animate="visible"
                         exit="exitRight"
-                        className="flex flex-col gap-2"
+                        className="flex flex-col gap-4 py-2"
                       >
-                        <h3 className="font-display font-bold text-travertine text-xl tracking-wide uppercase mb-4">
+                        <h3
+                          className="font-display font-bold text-travertine text-xl sm:text-2xl tracking-wide uppercase px-4 md:px-5 pt-2 mb-6"
+                        >
                           Architectural Details
                         </h3>
                         <FloatingLabelTextarea
@@ -245,7 +257,7 @@ export default function Inquiry() {
                           rows={4}
                         />
 
-                        <div className="pt-6 flex flex-col sm:flex-row justify-between gap-4">
+                        <div className="pt-8 flex flex-col sm:flex-row justify-between gap-4 px-1">
                           <button
                             type="button"
                             onClick={prevStep}
@@ -268,7 +280,7 @@ export default function Inquiry() {
                   </AnimatePresence>
                 </div>
 
-                <p className="text-travertine/40 text-xs font-body mt-4 leading-relaxed text-center">
+                <p className="text-travertine/50 text-xs font-body mt-6 pb-2 px-4 leading-relaxed text-center">
                   Your property specifications are held with absolute discretion. All consultations are confidential.
                 </p>
               </form>

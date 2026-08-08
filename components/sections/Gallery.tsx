@@ -7,28 +7,28 @@ import ImageReveal from '@/components/ui/ImageReveal'
 
 const GALLERY_ITEMS = [
   {
-    src: '/ezgif-frame-275.webp',
+    src: '/gallery_slate_copper.png',
     alt: 'Hand-laid slate roof tile installation with custom copper edge detailing',
     caption: 'Slate Tile & Copper Edging',
     span: 'lg:col-span-2 lg:row-span-2',
     aspect: '16/10',
   },
   {
-    src: '/ezgif-frame-140.webp',
+    src: '/gallery_copper_dormer.png',
     alt: 'Custom copper dormer flashing and architectural gutter craft',
     caption: 'Architectural Copper Flashing',
     span: '',
     aspect: '4/3',
   },
   {
-    src: '/ezgif-frame-195.webp',
+    src: '/gallery_timber_eaves.png',
     alt: 'Heavy timber roof eaves and overhang framing integrated with glass facade',
     caption: 'Timber Eaves & Facade Roofing',
     span: '',
     aspect: '4/3',
   },
   {
-    src: '/ezgif-frame-110.webp',
+    src: '/gallery_multipitch_truss.png',
     alt: 'Aerial structural roof detail showing slate tiles over heavy timber trusses',
     caption: 'Multi-Pitch Truss Geometry',
     span: 'lg:col-span-2',

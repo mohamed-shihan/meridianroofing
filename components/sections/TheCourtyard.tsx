@@ -45,8 +45,8 @@ export default function TheCourtyard() {
           <ImageReveal className="w-full" delay={0.15}>
             <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-timber/30 shadow-2xl" style={{ aspectRatio: '4/3' }}>
               <Image
-                src="/ezgif-frame-085.webp"
-                alt="Aerial view of complex multi-pitch timber roof framing and courtyard geometry"
+                src="/copper_valleys_flashing.png"
+                alt="Multi-pitch estate roofline with hand-soldered copper valley flashing and custom dormer caps"
                 fill
                 quality={85}
                 sizes="(max-width: 1024px) 100vw, 55vw"

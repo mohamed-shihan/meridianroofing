@@ -129,7 +129,6 @@ export default function Hero() {
                 border: '2px solid #D89448',
                 borderRadius: '14px',
                 textDecoration: 'none',
-                cursor: 'none',
                 boxShadow: '0 6px 24px rgba(216,148,72,0.35)',
               }}
             >

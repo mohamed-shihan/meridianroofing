@@ -9,8 +9,15 @@ export default function Footer() {
       id="footer"
       aria-label="Footer"
       className="bg-obsidian border-t border-timber/25"
+      style={{
+        paddingTop: 'clamp(60px, 8vw, 100px)',
+        paddingBottom: 'clamp(60px, 8vw, 100px)',
+      }}
     >
-      <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
+      <div
+        className="max-w-content mx-auto"
+        style={{ paddingLeft: 'var(--gutter)', paddingRight: 'var(--gutter)' }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
 
           {/* Column 1 — Brand */}
@@ -25,7 +32,7 @@ export default function Footer() {
                 MERIDIAN ROOFING CO.
               </p>
             </div>
-            <p className="font-body text-travertine/50 text-xs leading-relaxed max-w-[260px]">
+            <p className="font-body text-travertine/55 text-xs leading-relaxed max-w-[280px]">
               Master Timber Framing &amp; Slate Roofing Contractors. Built once. Built right.
             </p>
           </div>
@@ -33,10 +40,10 @@ export default function Footer() {
           {/* Column 2 — Fine print */}
           <div className="flex flex-col gap-3">
             <p className="eyebrow text-travertine/40 mb-1 tracking-[0.2em]">LICENSING &amp; PRIVACY</p>
-            <p className="font-body text-travertine/45 text-xs leading-relaxed">
+            <p className="font-body text-travertine/50 text-xs leading-relaxed">
               Meridian Roofing Co. is a licensed master roofing &amp; timber framing contractor (FL State Cert #CCC133099). All architectural imagery proprietary.
             </p>
-            <p className="font-body text-travertine/45 text-xs leading-relaxed">
+            <p className="font-body text-travertine/50 text-xs leading-relaxed">
               Specializing in bespoke estate roofing systems, hand-laid slate, and structural timber trusses.
             </p>
           </div>
@@ -47,7 +54,7 @@ export default function Footer() {
             <address className="not-italic flex flex-col gap-3">
               <a
                 href="mailto:inquire@meridianroofing.co"
-                className="group flex items-center gap-2.5 text-travertine/60 hover:text-ember text-xs font-body font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ember"
+                className="group flex items-center gap-2.5 text-travertine/65 hover:text-ember text-xs font-body font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ember"
                 aria-label="Email Meridian Roofing Co."
               >
                 <Mail size={14} strokeWidth={1.5} aria-hidden />
@@ -55,13 +62,13 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+13055550199"
-                className="group flex items-center gap-2.5 text-travertine/60 hover:text-ember text-xs font-body font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ember"
+                className="group flex items-center gap-2.5 text-travertine/65 hover:text-ember text-xs font-body font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ember"
                 aria-label="Call Meridian Roofing Co."
               >
                 <Phone size={14} strokeWidth={1.5} aria-hidden />
                 +1 (305) 555&ndash;0199
               </a>
-              <span className="flex items-center gap-2.5 text-travertine/45 text-xs font-body">
+              <span className="flex items-center gap-2.5 text-travertine/50 text-xs font-body">
                 <MapPin size={14} strokeWidth={1.5} aria-hidden />
                 South Florida &bull; National Estate Contracting
               </span>
@@ -71,11 +78,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-timber/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <p className="font-body text-travertine/35 text-xs">
+        <div
+          className="border-t border-timber/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+          style={{
+            marginTop: 'clamp(40px, 5vw, 64px)',
+            paddingTop: 'clamp(24px, 3vw, 36px)',
+          }}
+        >
+          <p className="font-body text-travertine/50 text-xs">
             &copy; {year} Meridian Roofing Co. All rights reserved.
           </p>
-          <p className="font-body text-travertine/30 text-xs tracking-wider uppercase font-semibold">
+          <p className="font-body text-travertine/45 text-xs tracking-wider uppercase font-semibold">
             By Private Appointment Only
           </p>
         </div>

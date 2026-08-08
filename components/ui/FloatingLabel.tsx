@@ -38,7 +38,7 @@ export function FloatingLabelInput({
         }}
         onChange={(e) => setHasValue(e.target.value.length > 0)}
         className={[
-          'peer w-full h-16 px-5 pt-6 pb-2 bg-transparent text-travertine text-sm font-body font-medium',
+          'peer w-full h-16 px-4 md:px-5 pt-6 pb-2 bg-transparent text-travertine text-sm font-body font-medium',
           'border-b outline-none transition-colors duration-200',
           'placeholder-transparent',
           focused ? 'border-ember' : 'border-travertine/25',
@@ -49,7 +49,7 @@ export function FloatingLabelInput({
       <label
         htmlFor={uid}
         className={[
-          'absolute left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
+          'absolute left-4 md:left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
           isFloated
             ? 'top-2 text-[10px] tracking-widest uppercase text-ember font-extrabold'
             : 'top-5 text-sm text-travertine/50',
@@ -95,7 +95,7 @@ export function FloatingLabelTextarea({
         }}
         onChange={(e) => setHasValue(e.target.value.length > 0)}
         className={[
-          'peer w-full px-5 pt-8 pb-3 bg-transparent text-travertine text-sm font-body font-medium resize-none',
+          'peer w-full px-4 md:px-5 pt-8 pb-3 bg-transparent text-travertine text-sm font-body font-medium resize-none',
           'border-b outline-none transition-colors duration-200',
           'placeholder-transparent',
           focused ? 'border-ember' : 'border-travertine/25',
@@ -106,7 +106,7 @@ export function FloatingLabelTextarea({
       <label
         htmlFor={uid}
         className={[
-          'absolute left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
+          'absolute left-4 md:left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
           isFloated
             ? 'top-2 text-[10px] tracking-widest uppercase text-ember font-extrabold'
             : 'top-5 text-sm text-travertine/50',
@@ -142,7 +142,7 @@ export function FloatingSelect({ label, name, required, options }: FloatingSelec
         onBlur={() => setFocused(false)}
         onChange={(e) => setHasValue(e.target.value.length > 0)}
         className={[
-          'peer w-full h-16 px-5 pt-6 pb-2 bg-transparent text-travertine text-sm font-body font-medium',
+          'peer w-full h-16 px-4 md:px-5 pt-6 pb-2 bg-transparent text-travertine text-sm font-body font-medium',
           'border-b outline-none transition-colors duration-200 cursor-pointer appearance-none',
           focused ? 'border-ember' : 'border-travertine/25',
           'focus-visible:outline-none',
@@ -158,7 +158,7 @@ export function FloatingSelect({ label, name, required, options }: FloatingSelec
       <label
         htmlFor={uid}
         className={[
-          'absolute left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
+          'absolute left-4 md:left-5 transition-all duration-200 pointer-events-none font-body font-semibold',
           hasValue || focused
             ? 'top-2 text-[10px] tracking-widest uppercase text-ember font-extrabold'
             : 'top-5 text-sm text-travertine/50',
@@ -168,7 +168,7 @@ export function FloatingSelect({ label, name, required, options }: FloatingSelec
         {label}
       </label>
       {/* Custom chevron with clean spacing */}
-      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-travertine/60">
+      <div className="absolute right-4 md:right-5 top-1/2 -translate-y-1/2 pointer-events-none text-travertine/60">
         <svg width="12" height="7" viewBox="0 0 10 6" fill="none">
           <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
